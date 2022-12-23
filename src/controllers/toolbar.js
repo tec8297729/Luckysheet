@@ -56,6 +56,7 @@ export const defaultToolbar = [
     'screenshot',
     'findAndReplace',
     'protection',
+    'printOptions',
     'print'
 ];
 
@@ -97,6 +98,7 @@ export const toolbarIdMap = {
     screenshot: '#luckysheet-chart-btn-screenshot', //'screenshot'
     findAndReplace: '#luckysheet-icon-seachmore', //'Find and Replace'
     protection: '#luckysheet-icon-protection', // 'Worksheet protection'
+    printOptions: '#luckysheet-icon-print-options', // 'print'
     print: '#luckysheet-icon-print' // 'print'
 };
 
@@ -812,6 +814,19 @@ export function createToolbarHtml() {
                 </div>
             </div>
         </div>`, // 'Worksheet protection'
+        printOptions: `<div class="luckysheet-toolbar-select luckysheet-toolbar-menu-button luckysheet-inline-block" data-tips="${toolbar.printOptions}"
+        id="luckysheet-icon-print-options" role="button" style="user-select: none;"><div class="luckysheet-toolbar-menu-button-outer-box luckysheet-inline-block"
+        style="user-select: none;">
+            <div class="luckysheet-toolbar-button-inner-box luckysheet-inline-block"
+            style="user-select: none;">
+
+                <div class="luckysheet-icon luckysheet-inline-block " style="user-select: none;">
+                    <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-autofilter iconfont luckysheet-iconfont-dayin"
+                    style="user-select: none;">
+                    </div>
+                </div>
+            </div>
+        </div></div>`,
         print: `<div class="luckysheet-toolbar-select luckysheet-toolbar-menu-button luckysheet-inline-block" data-tips="${toolbar.print}"
         id="luckysheet-icon-print" role="button" style="user-select: none;">
             <div class="luckysheet-toolbar-menu-button-outer-box luckysheet-inline-block"
@@ -844,13 +859,13 @@ export function createToolbarHtml() {
             return '';
         }
         let i = 0;
-        showtoolbarConfig.forEach(function(key, i) {
+        showtoolbarConfig.forEach(function (key, i) {
             if (key === '|') {
                 const nameKeys = showtoolbarConfig[i - 1]
-                if(nameKeys !== '|') {
+                if (nameKeys !== '|') {
                     buttonHTML.push(
                         `<div id="toolbar-separator-${camel2split(nameKeys)}" class="luckysheet-toolbar-separator luckysheet-inline-block" style="user-select: none;"></div>`
-                        );
+                    );
                 }
             } else {
                 buttonHTML.push(htmlMap[key]);
@@ -859,7 +874,7 @@ export function createToolbarHtml() {
         return buttonHTML.join('');
     }
 
-    const config = defaultToolbar.reduce(function(total, curr) {
+    const config = defaultToolbar.reduce(function (total, curr) {
         if (curr !== '|') {
             total[curr] = true;
         }
@@ -874,7 +889,7 @@ export function createToolbarHtml() {
 
     // 对象模式 则从里面挑选 true 保留 false 删掉
     if (JSON.stringify(showtoolbarConfig) !== '{}') {
-        if(showtoolbarConfig.hasOwnProperty('undoRedo')){
+        if (showtoolbarConfig.hasOwnProperty('undoRedo')) {
             config.undo = config.redo = showtoolbarConfig.undoRedo;
         }
         Object.assign(config, showtoolbarConfig);
@@ -890,7 +905,7 @@ export function createToolbarHtml() {
         }
         if (key === '|') {
             const nameKeys = defaultToolbar[i - 1]
-            if(nameKeys !== '|') {
+            if (nameKeys !== '|') {
                 buttonHTML.push(
                     `<div id="toolbar-separator-${camel2split(nameKeys)}" class="luckysheet-toolbar-separator luckysheet-inline-block" style="user-select: none;"></div>`
                 );
