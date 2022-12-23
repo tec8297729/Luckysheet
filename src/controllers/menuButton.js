@@ -39,6 +39,7 @@ import Store from '../store';
 import locale from '../locale/locale';
 import { checkTheStatusOfTheSelectedCells, frozenFirstRow, frozenFirstColumn } from '../global/api';
 import { eventCenter, EventName } from '../utils/eventemitter';
+import { toolbarIdMap } from './toolbar'
 
 const menuButton = {
     "menu": '<div class="luckysheet-cols-menu luckysheet-rightgclick-menu luckysheet-menuButton ${subclass} luckysheet-mousedown-cancel" id="luckysheet-icon-${id}-menuButton">${item}</div>',
@@ -2888,7 +2889,7 @@ const menuButton = {
         });
 
         //print
-        $("#luckysheet-icon-print").click(function () {
+        $(toolbarIdMap.printOptions).click(function () {
             let menuButtonId = $(this).attr("id") + "-menuButton";
             let $menuButton = $("#" + menuButtonId);
             const _locale = locale();

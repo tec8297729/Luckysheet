@@ -57,7 +57,7 @@ export const defaultToolbar = [
     'findAndReplace',
     'protection',
     'printOptions',
-    'print'
+    // 'print'
 ];
 
 // 工具栏按钮 id 关系
@@ -98,8 +98,8 @@ export const toolbarIdMap = {
     screenshot: '#luckysheet-chart-btn-screenshot', //'screenshot'
     findAndReplace: '#luckysheet-icon-seachmore', //'Find and Replace'
     protection: '#luckysheet-icon-protection', // 'Worksheet protection'
-    printOptions: '#luckysheet-icon-print-options', // 'print'
-    print: '#luckysheet-icon-print' // 'print'
+    printOptions: '#luckysheet-icon-print-options', // '打印配置'
+    // print: '#luckysheet-icon-print' // 'print'
 };
 
 // 创建工具栏按钮的html
@@ -827,24 +827,24 @@ export function createToolbarHtml() {
                 </div>
             </div>
         </div></div>`,
-        print: `<div class="luckysheet-toolbar-select luckysheet-toolbar-menu-button luckysheet-inline-block" data-tips="${toolbar.print}"
-        id="luckysheet-icon-print" role="button" style="user-select: none;">
-            <div class="luckysheet-toolbar-menu-button-outer-box luckysheet-inline-block"
-            style="user-select: none;">
-                <div class="luckysheet-toolbar-button-inner-box luckysheet-inline-block"
-                style="user-select: none;">
+        // print: `<div class="luckysheet-toolbar-select luckysheet-toolbar-menu-button luckysheet-inline-block" data-tips="${toolbar.print}"
+        // id="luckysheet-icon-print" role="button" style="user-select: none;">
+        //     <div class="luckysheet-toolbar-menu-button-outer-box luckysheet-inline-block"
+        //     style="user-select: none;">
+        //         <div class="luckysheet-toolbar-button-inner-box luckysheet-inline-block"
+        //         style="user-select: none;">
 
-                    <div class="luckysheet-icon luckysheet-inline-block " style="user-select: none;">
-                        <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-autofilter iconfont luckysheet-iconfont-dayin"
-                        style="user-select: none;">
-                        </div>
-                    </div>
-                    <div class="luckysheet-toolbar-menu-button-dropdown luckysheet-inline-block iconfont luckysheet-iconfont-xiayige"
-                    style="user-select: none;margin-left: 0px;margin-right: 4px;">
-                    </div>
-                </div>
-            </div>
-        </div>` // 'print'
+        //             <div class="luckysheet-icon luckysheet-inline-block " style="user-select: none;">
+        //                 <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-autofilter iconfont luckysheet-iconfont-dayin"
+        //                 style="user-select: none;">
+        //                 </div>
+        //             </div>
+        //             <div class="luckysheet-toolbar-menu-button-dropdown luckysheet-inline-block iconfont luckysheet-iconfont-xiayige"
+        //             style="user-select: none;margin-left: 0px;margin-right: 4px;">
+        //             </div>
+        //         </div>
+        //     </div>
+        // </div>` // 'print'
     };
 
     const showtoolbar = luckysheetConfigsetting.showtoolbar;
