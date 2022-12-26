@@ -7357,3 +7357,20 @@ fieldset[disabled] .btn-danger.focus {
     cursor: default;
     opacity: .4;
 }
+
+#luckysheet-print-line-x {
+    position: relative;
+    height: 1px;
+    background-image: linear-gradient(to right, green 0%, green 50%, transparent 50%);
+    left: 0;
+    background-size: 8px 1px;
+    background-repeat: repeat-x;
+    z-index: 2;
+}
+#luckysheet-print-line-y {
+    position: relative;
+    width: 1px;
+    background-image: linear-gradient(to bottom, red 0%, red 50%, transparent 50%);
+    top: 0;
+    z-index: 2;
+}

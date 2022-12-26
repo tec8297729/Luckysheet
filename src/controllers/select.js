@@ -181,20 +181,20 @@ function selectHightlightShow(isRestore = false) {
         if (Store.luckysheet_select_save.length == 1 && Store.luckysheet_select_save[0].row[0] == Store.luckysheet_select_save[0].row[1] && Store.luckysheet_select_save[0].column[0] == Store.luckysheet_select_save[0].column[1]) {
             dynamicArrayHightShow(Store.luckysheet_select_save[0].row[0], Store.luckysheet_select_save[0].column[0]);
         }
-    
+
         /* 刷新当前状态栏 */
         refreshMenuButtonFocus();
     }
 
     Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)].luckysheet_select_save = Store.luckysheet_select_save;
-            // Hook function, change the range selection box, selectHightlightShowillbe triggered multiple times when mousemove is moused, and thhistoricalvalue is used here to throttle
-        const luckysheet_select_save_previous = JSON.stringify(Store.luckysheet_select_save);
+    // Hook function, change the range selection box, selectHightlightShowillbe triggered multiple times when mousemove is moused, and thhistoricalvalue is used here to throttle
+    const luckysheet_select_save_previous = JSON.stringify(Store.luckysheet_select_save);
 
-        if(Store.luckysheet_select_save_previous == null |Store.luckysheet_select_save_previous !== luckysheet_select_save_previous){
-            method.createHookFunction('rangeSelect', Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)], Store.luckysheet_select_save);
-        }
-        
-        Store.luckysheet_select_save_previous = luckysheet_select_save_previous;
+    if (Store.luckysheet_select_save_previous == null | Store.luckysheet_select_save_previous !== luckysheet_select_save_previous) {
+        method.createHookFunction('rangeSelect', Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)], Store.luckysheet_select_save);
+    }
+
+    Store.luckysheet_select_save_previous = luckysheet_select_save_previous;
 }
 
 //选区标题栏
@@ -349,14 +349,14 @@ function collaborativeEditBox() {
     Store.cooperativeEdit.changeCollaborationSize.forEach(value => {
         if (value.i == Store.currentSheetIndex) {
             let count_col = value.v.column;//系统提示框所在的列范围
-            let change_width = all_width[count_col[0]] -1 //提示框所在列号为0时要改变的宽
-            if(value.v.column[0] !== 0)  {
+            let change_width = all_width[count_col[0]] - 1 //提示框所在列号为0时要改变的宽
+            if (value.v.column[0] !== 0) {
                 //用提示框右边框到图表最左的距离减去左边框到图表左边距离再减去边框值
                 change_width = all_width[count_col[1]] - all_width[count_col[0] - 1] - (count_col[1] - count_col[0] + 1)
             }
             let count_row = value.v.row;//系统提示框所在的行范围
-            let change_height = all_height[count_row[0]] -1
-            if(value.v.row[0] !== 0){
+            let change_height = all_height[count_row[0]] - 1
+            if (value.v.row[0] !== 0) {
                 change_height = all_height[count_row[1]] - all_height[count_row[0] - 1] - (count_row[1] - count_row[0] + 1)
             }
             let range = Store.cooperativeEdit.merge_range //获取单元格合并后的数据
@@ -400,15 +400,15 @@ function collaborativeEditBox() {
                 }
             }
             //合并单元格时执行
-            if (Object.keys(range).length > 0 ) {
+            if (Object.keys(range).length > 0) {
                 let flag_sure_merge = false
-                if(range.v.length > 1) {
+                if (range.v.length > 1) {
                     flag_sure_merge = range.v[1][0] == null || Object.keys(range.v[1][0]).length > 0
                 }
-                if(range.v[0].length > 1) {
+                if (range.v[0].length > 1) {
                     flag_sure_merge = range.v[0][1] == null || Object.keys(range.v[0][1]).length > 0
                 }
-                if(flag_sure_merge) {
+                if (flag_sure_merge) {
                     // 合并成一个时执行
                     let flag_merge_width = range.column[0] <= value.v.column[0] && range.column[1] >= value.v.column[1];
                     change_left = all_width[range.column[0] - 1] - 1
@@ -437,11 +437,11 @@ function collaborativeEditBox() {
                 } else {
                     // 合并取消变成多个单元格时执行
                     change_width = all_width[count_col[0]] - all_width[count_col[0] - 1] - 1
-                    if(count_col[0] === 0) {
+                    if (count_col[0] === 0) {
                         change_width = all_width[count_col[0]] - 1
                     }
                     change_height = all_height[count_row[0]] - all_height[count_row[0] - 1] - 1
-                    if(count_row[0] === 0) {
+                    if (count_row[0] === 0) {
                         change_height = all_height[count_row[0]] - 1
                     }
                 }
@@ -510,7 +510,7 @@ function luckysheet_count_show(left, top, width, height, rowseleted, columnselet
             topv = scrollHeight + drawHeight / 2;
         }
 
-        $("#luckysheet-row-count-show").css({ "left": leftv, "top": topv, "display": "block", "width": "11px" }).html("<div>" + rowl.toString().split("").join("</div><div>") + "</div><div>" + locale_info.row + "</div>");
+        // $("#luckysheet-row-count-show").css({ "left": leftv, "top": topv, "display": "block", "width": "11px" }).html("<div>" + rowl.toString().split("").join("</div><div>") + "</div><div>" + locale_info.row + "</div>");
     }
     else {
         $("#luckysheet-row-count-show").hide();
@@ -531,7 +531,7 @@ function luckysheet_count_show(left, top, width, height, rowseleted, columnselet
             leftv = scrollWidth + drawWidth / 2;
         }
 
-        $("#luckysheet-column-count-show").css({ "left": leftv, "top": topv, "display": "block" }).text(coll + locale_info.column);
+        // $("#luckysheet-column-count-show").css({ "left": leftv, "top": topv, "display": "block" }).text(coll + locale_info.column);
     }
     else {
         $("#luckysheet-column-count-show").hide();
